@@ -1,5 +1,11 @@
 # ebs-csi-eks-demo
 
+
+```
+eksctl utils associate-iam-oidc-provider --cluster eks-irsa-cluster  --approve --region us-east-2
+```
+
+
 ```
 eksctl create addon --name aws-ebs-csi-driver --cluster your-cluster-name --service-account-role-arn arn:aws:iam::111122223333:role/AmazonEKS_EBS_CSI_DriverRole --force
 ```
