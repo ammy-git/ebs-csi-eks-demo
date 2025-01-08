@@ -2,28 +2,23 @@
 
 
 ```
-eksctl utils associate-iam-oidc-provider --cluster eks-irsa-cluster  --approve --region us-east-2
+eksctl utils associate-iam-oidc-provider --cluster eks-ebs-csi-cluster  --approve --region us-east-2
 ```
 
 
 ```
-eksctl create addon --name aws-ebs-csi-driver --cluster your-cluster-name --service-account-role-arn arn:aws:iam::111122223333:role/AmazonEKS_EBS_CSI_DriverRole --force
-```
-
-```
-docker build -t your-registry/ebs-demo:latest .
-docker push your-registry/ebs-demo:latest
-```
-
-```
-kubectl apply -f storage-class.yaml
-kubectl apply -f pvc.yaml
-kubectl apply -f deployment.yaml
+eksctl create iamserviceaccount \
+  --name ebs-csi-controller-sa \
+  --namespace kube-system \
+  --cluster eks-ebs-csi-cluster \
+  --attach-policy-arn arn:aws:iam::aws:policy/service-role/AmazonEBSCSIDriverPolicy \
+  --approve \
+  --role-only \
+  --role-name AmazonEKS_EBS_CSI_Driver_Role
 ```
 
 
 ```
-kubectl get pvc
-kubectl get pods
-kubectl describe pod <pod-name>
+eksctl create addon --name aws-ebs-csi-driver --cluster eks-ebs-csi-cluster --service-account-role-arn <my role arn> --force
 ```
+
