@@ -1,5 +1,12 @@
 # ebs-csi-eks-demo
 
+### Theory
+
+```
+EKS EBS CSI Driver is a Container Storage Interface (CSI) driver for Amazon Elastic Kubernetes Service (EKS) that allows Kubernetes clusters to use Amazon Elastic Block Store (EBS) volumes for persistent storage.
+```
+
+
 ### Associating IAM OIDC Provider with my cluster
 
 ```
