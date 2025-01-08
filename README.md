@@ -14,7 +14,8 @@ eksctl create iamserviceaccount \
   --attach-policy-arn arn:aws:iam::aws:policy/service-role/AmazonEBSCSIDriverPolicy \
   --approve \
   --role-only \
-  --role-name AmazonEKS_EBS_CSI_Driver_Role
+  --role-name AmazonEKS_EBS_CSI_Driver_Role \
+  --region us-east-2
 ```
 
 
