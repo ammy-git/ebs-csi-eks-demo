@@ -1,4 +1,4 @@
-# ebs-csi-eks-demo
+# ebs-csi-eks-STORAGE-demo
 
 ### Theory
 
